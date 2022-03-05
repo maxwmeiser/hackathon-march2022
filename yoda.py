@@ -2,17 +2,25 @@ from email import header
 import requests
 import json
 
-url = "https://api.funtranslations.com/translate/yoda.json"
 
-querystring = {"text":"problem"}
+def getYodaTranslation(text):
+    url = "https://api.funtranslations.com/translate/yoda.json"
 
-header = {"X-FunTranslations-Api-Secret":"G2Ygw8PEz6lqpGWdvFaV2QeF"}
+    querystring = {"text": text}
 
-response = requests.post(url,headers=header,data=querystring)
+    header = {"X-FunTranslations-Api-Secret":"G2Ygw8PEz6lqpGWdvFaV2QeF"}
 
-json_data = json.loads(response.text)
+    res = requests.post(url,headers=header,data=querystring)
 
-print(response.text)
+    #print(res.text)
+
+    res_json = json.loads(res.text)
+
+    translated_content = res_json["contents"]["translated"]
+
+    return translated_content
+
+
 
 
 
