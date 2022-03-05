@@ -9,7 +9,7 @@ def email_message(subject, body, to):
     msg['subject'] = subject
     msg['to'] = to
 
-    user = "motiYoda2022@gmail.com"
+    user = "motiyoda2022@gmail.com"
     msg['from'] = user
     password = "glvslxmkxcsfidxo"
 
@@ -20,5 +20,10 @@ def email_message(subject, body, to):
 
     server.quit()
 
+
+
+    def main():
+        email_message("thet2","test2","zyns.net@gmail.com")
+
     if __name__ == '__main__':
-        email_message("the","big test","mame5632@colorado.edu")
+        main()
