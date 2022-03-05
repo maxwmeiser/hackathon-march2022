@@ -1,5 +1,6 @@
 #utilized https://www.youtube.com/watch?v=B1IsCbXp0uE
 
+import sys
 import smtplib
 from email.message import EmailMessage
 
@@ -17,14 +18,8 @@ def email_message(subject, body, to):
     server.starttls()
     server.login(user, password)
     server.send_message(msg)
-    print('past send_message')
     server.quit()
 
-
-
-    #def main():
-    #    email_message("thet2","test2","zyns.net@gmail.com")
-
 if __name__ == '__main__':
-    print('getting here')
-    email_message("message test", "test 2", "zyns.net@gmail.com")
+    email_message(sys.argv[1],sys.argv[2],sys.argv[3])
+    print('MESSAGE| Subject: '+sys.argv[1]+' |Body: '+sys.argv[2]+' |Recipient: '+sys.argv[3])
