@@ -1,6 +1,8 @@
 from alert import email_message
 from yoda import getYodaTranslation
-from message import getMotiMessage
+#from message import getMotiMessage
+import schedule
+import time
 
 #this function takes in input to determine what address to send the message to. returns a string for third argument of email_message
 def get_recip_address():
@@ -36,11 +38,20 @@ def get_recip_address():
             print('Invalid menu selection. Please try again')
             return 'invalid'
 
+def send_message():
+    email_message("Today's motiYoda",'testing every minute',userAddress)
 
-if __name__ == '__main__':
+userAddress = get_recip_address()
+while userAddress == 'invalid' and userAddress != 'quit':
     userAddress = get_recip_address()
-    while userAddress == 'invalid' and userAddress != 'quit':
-        userAddress = get_recip_address()
 
-    if userAddress != 'quit':
-        email_message("TEST TRANSLATION","testing the address function",userAddress)
+RUN = True
+
+if userAddress == 'quit':
+    RUN = False
+
+schedule.every(5).seconds.do(send_message)
+
+while RUN:
+    schedule.run_pending()
+    time.sleep(1)
