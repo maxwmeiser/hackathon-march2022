@@ -3,8 +3,7 @@ from message import getMotivationalQuote, formatForYoda, addPersonalMessage
 from yoda import getYodaTranslation
 from validate_email_address import validate_email
 #from message import getMotiMessage
-import schedule
-import time
+
 
 #this function takes in input to personalize the message
 def personalize_message():
@@ -98,6 +97,7 @@ if userAddress == "quit":
 if RUN:
     print('\nMessage sent!\n')
     send_message()
+
 
 
 #time-based resend. phased out during production

@@ -1,6 +1,4 @@
 #utilized https://www.youtube.com/watch?v=B1IsCbXp0uE
-
-import sys
 import smtplib
 from email.message import EmailMessage
 

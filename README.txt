@@ -1,12 +1,15 @@
-CU Hackathon March 2022. We have no idea what to do
+MotiYoda
+By Grace Ohlsen and Max Meiser
 
-Grace has access
 
-IDEA: take motivational quotes from API. translate using Yoda API. send text message with translated motivational quotes
+In order to run MotiYoda,
 
-gmail:
-    email: motiYoda2022
-    pass: HackCU2022!
-    APP pass: glvslxmkxcsfidxo
-    
-GRACE: https://devpost.com/software/435627/joins/dbzg2S5sjUOUycwDXnhcNw
+1. Make sure you have Python 3.10.2 and the most recent version of pip installed
+
+2. Run these commands:
+- pip install secure-smtplib 
+- pip install validate_email_address 
+- pip install requests
+
+3. Run this final command:
+- python3 app.py

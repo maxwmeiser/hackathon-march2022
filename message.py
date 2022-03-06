@@ -1,4 +1,3 @@
-from re import X
 import requests
 from yoda import getYodaTranslation
 
