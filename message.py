@@ -60,3 +60,23 @@ def formatForYoda(quote):
         result = result + " (inspired by " + speaker + ")"
 
     return result
+
+
+def addPersonalMessage(sender, recipient, quote, body):
+    wholeMessage = quote
+
+
+    if(body != ""):
+        wholeMessage = body + "\n\n" + wholeMessage
+
+    if(recipient != ""):
+        wholeMessage = "Hi " + recipient + ",\n\n" + wholeMessage
+
+    if(sender != ""):
+        wholeMessage = "\n\n" + "From: " + sender    
+
+    
+    
+    return wholeMessage
+
+

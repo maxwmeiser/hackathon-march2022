@@ -53,7 +53,7 @@ RUN = True
 if userAddress == 'quit':
     RUN = False
 
-schedule.every(30).seconds.do(send_message)
+schedule.every(15).seconds.do(send_message)
 
 while RUN:
     schedule.run_pending()
