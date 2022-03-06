@@ -1,6 +1,7 @@
 from alert import email_message
 from message import getMotivationalQuote, formatForYoda, addPersonalMessage
 from yoda import getYodaTranslation
+from validate_email_address import validate_email
 #from message import getMotiMessage
 import schedule
 import time
@@ -20,30 +21,38 @@ def get_recip_address():
     print('How would you like the recipient to recieve your messages?\n1. Email\n2. Text Message\n3. Cancel')
     mediumPick = input('#> ')
     match mediumPick:
-        case '1':
-            return input("Please enter the recipient's email address: ")
+        case '1':    
+            emailIn = input("Please enter the recipient's email address: ")
+            while not validate_email(emailIn) and emailIn != "exit":
+                emailIn = input('Invalid email address. Please try again or enter "exit" to quit: ')
+            if emailIn == "exit":
+                return "quit"
+            return emailIn
         case '2':
-            userCarrier = input("Please select the recipient's service carrier: \n1. AT&T\n2. Boost Mobile\n3. Sprint\n4. T-Mobile\n5. Verizon\n6. Virgin Mobile\n7. Cancel\n#> ")
-            if userCarrier != '7':
-                userNumber = input("Please enter the recipient's phone number: ")
-            match userCarrier:
-                case '1':
-                    return userNumber + '@mms.att.net'
-                case '2':
-                    return userNumber + '@myboostmobile.com'
-                case '3':
-                    return userNumber + '@pm.sprint.com'
-                case '4':
-                    return userNumber + '@tmomail.net'
-                case '5':
-                    return userNumber + '@vzwpix.com'
-                case '6':
-                    return userNumber + '@vmpix.com'
-                case '7':
-                    return "quit"
-                case _:
-                    print('Invalid menu selection')
-                    return 'invalid'
+            phoneAddress = ""
+            while not validate_email(phoneAddress) and phoneAddress != "quit":
+                userCarrier = input("Please select the recipient's service carrier: \n1. AT&T\n2. Boost Mobile\n3. Sprint\n4. T-Mobile\n5. Verizon\n6. Virgin Mobile\n7. Cancel\n#> ")
+                if userCarrier != '7':
+                    userNumber = input("Please enter the recipient's phone number: ")
+                match userCarrier:
+                    case '1':
+                        phoneAddress = userNumber + '@mms.att.net'
+                    case '2':
+                        phoneAddress = userNumber + '@myboostmobile.com'
+                    case '3':
+                        phoneAddress = userNumber + '@pm.sprint.com'
+                    case '4':
+                        phoneAddress = userNumber + '@tmomail.net'
+                    case '5':
+                        phoneAddress = userNumber + '@vzwpix.com'
+                    case '6':
+                        phoneAddress = userNumber + '@vmpix.com'
+                    case '7':
+                        phoneAddress = "quit"
+                    case _:
+                        print('Invalid menu selection')
+                        phoneAddress = 'invalid'
+            return phoneAddress
         case '3':
             return 'quit'
         case _:
@@ -56,7 +65,6 @@ def send_message():
 completeMessage = personalize_message()
 
 userAddress = get_recip_address()
-print(userAddress)
 while userAddress == 'invalid' and userAddress != "quit":
     userAddress = get_recip_address()
 
@@ -68,6 +76,7 @@ if userAddress == "quit":
 
 
 if RUN:
+    print('Message sent!')
     send_message()
 
 
