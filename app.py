@@ -24,7 +24,7 @@ def get_recip_address():
             return input("Please enter the recipient's email address: ")
         case '2':
             userCarrier = input("Please select the recipient's service carrier: \n1. AT&T\n2. Boost Mobile\n3. Sprint\n4. T-Mobile\n5. Verizon\n6. Virgin Mobile\n7. Cancel\n#> ")
-            if userCarrier != 7:
+            if userCarrier != '7':
                 userNumber = input("Please enter the recipient's phone number: ")
             match userCarrier:
                 case '1':
@@ -40,7 +40,7 @@ def get_recip_address():
                 case '6':
                     return userNumber + '@vmpix.com'
                 case '7':
-                    return 'quit'
+                    return "quit"
                 case _:
                     print('Invalid menu selection')
                     return 'invalid'
@@ -56,12 +56,13 @@ def send_message():
 completeMessage = personalize_message()
 
 userAddress = get_recip_address()
-while userAddress == 'invalid' and userAddress != 'quit':
+print(userAddress)
+while userAddress == 'invalid' and userAddress != "quit":
     userAddress = get_recip_address()
 
 RUN = True
 
-if userAddress == 'quit':
+if userAddress == "quit":
     RUN = False
 
 
