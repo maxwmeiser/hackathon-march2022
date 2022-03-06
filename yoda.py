@@ -2,7 +2,7 @@ from email import header
 import requests
 import json
 
-
+# This function takes in text and uses FunTranslations Yoda API to translate into Yoda language and return new text
 def getYodaTranslation(text):
     url = "https://api.funtranslations.com/translate/yoda.json"
 
@@ -11,8 +11,6 @@ def getYodaTranslation(text):
     header = {"X-FunTranslations-Api-Secret":"G2Ygw8PEz6lqpGWdvFaV2QeF"}
 
     res = requests.post(url,headers=header,data=querystring)
-
-    #print(res.text)
 
     res_json = json.loads(res.text)
 
