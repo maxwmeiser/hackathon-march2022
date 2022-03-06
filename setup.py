@@ -18,7 +18,7 @@ setup(
         'requests',
         'email',
         'json'
-    ]
+    ],
     entry_points={
         'console_scripts': [
             'moti-yoda-cli = app.py.main:main'
