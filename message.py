@@ -78,8 +78,10 @@ def addPersonalMessage(sender, recipient, quote, body):
     if(recipient != ""):
         wholeMessage = "Hi " + recipient + ",\n\n" + wholeMessage
 
+
     if(sender != ""):
-        wholeMessage = "\n\n" + "From: " + sender    
+        wholeMessage = wholeMessage + "\n\n" + "From: " + sender   
+
 
     
     
