@@ -53,12 +53,11 @@ RUN = True
 if userAddress == 'quit':
     RUN = False
 
-<<<<<<< HEAD
-schedule.every(15).seconds.do(send_message)
-=======
+
+
 if RUN:
     send_message()
->>>>>>> 4d15b8fda8c73690ca35408d37dfaf6174d73eca
+
 
 #schedule.every(30).seconds.do(send_message)
 
