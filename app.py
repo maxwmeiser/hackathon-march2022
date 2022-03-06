@@ -8,21 +8,21 @@ import time
 
 #this function takes in input to personalize the message
 def personalize_message():
-    print('Motivational Yoda shall be delivered. If you dont want to submit your information, leave the field blank and hit enter.')
+    print("\n\n-------MotiYoda: SMS/Email-------\n##Welcome to MotiYoda! Send a personalized message to a friend\n through text or email with an included\n inspirational quote from Yoda himself.\n If you dont want to submit your information,\n leave the field blank and hit enter.##\n")
     senderIn = input('Please input your name: ')
     recipientIn = input("Please enter the recipient's name: ")
-    bodyIn = input('Please enter the body of your personal message: ')
+    bodyIn = input('\nPlease enter the body of your personal message: ')
     quoteIn = formatForYoda(getMotivationalQuote())
     return addPersonalMessage(senderIn,recipientIn,quoteIn,bodyIn)
 
 
 #this function takes in input to determine what address to send the message to. returns a string for third argument of email_message
 def get_recip_address():
-    print('How would you like the recipient to recieve your messages?\n1. Email\n2. Text Message\n3. Cancel')
+    print('\nHow would you like the recipient to recieve your messages?\n1. Email\n2. Text Message\n3. Cancel')
     mediumPick = input('#> ')
     match mediumPick:
         case '1':    
-            emailIn = input("Please enter the recipient's email address: ")
+            emailIn = input("\nPlease enter the recipient's email address: ")
             while not validate_email(emailIn) and emailIn != "exit":
                 emailIn = input('Invalid email address. Please try again or enter "exit" to quit: ')
             if emailIn == "exit":
@@ -31,9 +31,9 @@ def get_recip_address():
         case '2':
             phoneAddress = ""
             while not validate_email(phoneAddress) and phoneAddress != "quit":
-                userCarrier = input("Please select the recipient's service carrier: \n1. AT&T\n2. Boost Mobile\n3. Sprint\n4. T-Mobile\n5. Verizon\n6. Virgin Mobile\n7. Cancel\n#> ")
+                userCarrier = input("\nPlease select the recipient's service carrier: \n1. AT&T\n2. Boost Mobile\n3. Sprint\n4. T-Mobile\n5. Verizon\n6. Virgin Mobile\n7. Cancel\n#> ")
                 if userCarrier != '7':
-                    userNumber = input("Please enter the recipient's phone number: ")
+                    userNumber = input("\nPlease enter the recipient's phone number: ")
                 match userCarrier:
                     case '1':
                         phoneAddress = userNumber + '@mms.att.net'
@@ -76,7 +76,7 @@ if userAddress == "quit":
 
 
 if RUN:
-    print('Message sent!')
+    print('\nMessage sent!\n')
     send_message()
 
 
