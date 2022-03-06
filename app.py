@@ -53,8 +53,15 @@ RUN = True
 if userAddress == 'quit':
     RUN = False
 
+<<<<<<< HEAD
 schedule.every(15).seconds.do(send_message)
+=======
+if RUN:
+    send_message()
+>>>>>>> 4d15b8fda8c73690ca35408d37dfaf6174d73eca
 
-while RUN:
-    schedule.run_pending()
-    time.sleep(1)
+#schedule.every(30).seconds.do(send_message)
+
+#while RUN:
+#    schedule.run_pending()
+#    time.sleep(1)
