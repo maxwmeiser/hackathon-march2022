@@ -31,9 +31,12 @@ def get_recip_address():
         case '2':
             phoneAddress = ""
             while not validate_email(phoneAddress) and phoneAddress != "quit":
+                userNumber = input("\nPlease enter the recipient's phone number: ")
+                if len(userNumber) != 10:
+                    print ("Invalid number. Please enter 10 digits")
+                    continue
                 userCarrier = input("\nPlease select the recipient's service carrier: \n1. AT&T\n2. Boost Mobile\n3. Sprint\n4. T-Mobile\n5. Verizon\n6. Virgin Mobile\n7. Cancel\n#> ")
-                if userCarrier != '7':
-                    userNumber = input("\nPlease enter the recipient's phone number: ")
+                #if userCarrier != '7': 
                 match userCarrier:
                     case '1':
                         phoneAddress = userNumber + '@mms.att.net'
