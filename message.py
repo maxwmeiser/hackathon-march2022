@@ -1,5 +1,5 @@
+from re import X
 import requests
-import string
 from yoda import getYodaTranslation
 
 
@@ -31,33 +31,32 @@ def formatForYoda(quote):
         speaker = ""
 
     result = quote.split('"')[1::2]
+
+    # result = result.split(".")
+
     result = result[0].lower()
 
-    for i in result:
-        if i in string.punctuation:
-            result = result.replace(i,"")
+    result = result.split('.')
+
+    punc = '!()-[]{};:'"\,<>./?@#$%^&*_~"
+
+    for i, element in enumerate(result):
+
+        for x in result[i]:
+            if x in punc:
+                result[i] = result[i].replace(x,"")
+
+        result[i] = getYodaTranslation(result[i])
 
 
-    # get rid of capitalization and punctuation
+    newQuote = ""
+    for i, element in enumerate(result):
+        if(result[i] != ""):
+            newQuote = newQuote + result[i] + ". "
 
-    # interpret by yoda
-
-    result = getYodaTranslation(result)
-
-    # reformat
-
-    result = "\"" + result + "\" - Yoda"
+    result = "\" " + newQuote + " \" - Yoda"
 
     if((speaker == "") == False):
         result = result + " (inspired by " + speaker + ")"
 
     return result
-
-def main():
-    unformattedQuote = getMotivationalQuote()
-    print(unformattedQuote)
-    print(formatForYoda(unformattedQuote))
-    return
-
-if __name__ == '__main__':
-    main()
