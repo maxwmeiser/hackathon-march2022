@@ -24,7 +24,8 @@ def get_recip_address():
             return input("Please enter the recipient's email address: ")
         case '2':
             userCarrier = input("Please select the recipient's service carrier: \n1. AT&T\n2. Boost Mobile\n3. Sprint\n4. T-Mobile\n5. Verizon\n6. Virgin Mobile\n7. Cancel\n#> ")
-            userNumber = input("Please enter the recipient's phone number: ")
+            if userCarrier != 7:
+                userNumber = input("Please enter the recipient's phone number: ")
             match userCarrier:
                 case '1':
                     return userNumber + '@mms.att.net'
