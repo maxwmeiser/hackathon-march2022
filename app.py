@@ -1,4 +1,5 @@
 from alert import email_message
+from message import getMotivationalQuote, formatForYoda
 from yoda import getYodaTranslation
 #from message import getMotiMessage
 import schedule
@@ -39,7 +40,9 @@ def get_recip_address():
             return 'invalid'
 
 def send_message():
-    email_message("Today's motiYoda",'testing every minute',userAddress)
+    unformattedQuote = getMotivationalQuote()
+    formattedQuote = formatForYoda(unformattedQuote)
+    email_message("Today's MotiYoda",formattedQuote,userAddress)
 
 userAddress = get_recip_address()
 while userAddress == 'invalid' and userAddress != 'quit':
@@ -50,7 +53,7 @@ RUN = True
 if userAddress == 'quit':
     RUN = False
 
-schedule.every(5).seconds.do(send_message)
+schedule.every(30).seconds.do(send_message)
 
 while RUN:
     schedule.run_pending()
