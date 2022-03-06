@@ -38,7 +38,6 @@ def get_recip_address():
 
 
 if __name__ == '__main__':
-    #print(getRecipAddress())
     userAddress = get_recip_address()
     while userAddress == 'invalid' and userAddress != 'quit':
         userAddress = get_recip_address()
