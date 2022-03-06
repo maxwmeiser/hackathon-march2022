@@ -11,7 +11,6 @@ setup(
     url='https://github.com/maxwmeiser/hackathon-march2022',
     packages=find_packages(),
     install_requires=[
-        'alert.py',
         'smtplib',
         'email.message',
         'validate_email_address',
