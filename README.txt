@@ -7,9 +7,13 @@ In order to run MotiYoda,
 1. Make sure you have Python 3.10.2 and the most recent version of pip installed
 
 2. Run these commands:
-- pip install secure-smtplib 
-- pip install validate_email_address 
-- pip install requests
+```
+pip install secure-smtplib 
+pip install validate_email_address 
+pip install requests
+```
 
 3. Run this final command:
-- python3 app.py
+```
+python3 app.py
+```
